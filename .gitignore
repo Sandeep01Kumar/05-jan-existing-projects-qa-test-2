@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Testing
+coverage/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# SSL certificates (should be provided separately)
+*.pem
+*.key
+*.crt
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build outputs
+dist/
+build/
