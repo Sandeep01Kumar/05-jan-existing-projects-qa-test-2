@@ -121,22 +121,29 @@ describe('CORS Configuration', () => {
 // RATE LIMITING TESTS - 2 tests
 // =============================================================================
 
-describe('Rate Limiting', () => {
-  test('should include RateLimit-Policy header', async () => {
+describe('Rate Limiting (draft-8)', () => {
+  test('should include RateLimit-Policy header (draft-8)', async () => {
     const response = await request(app).get('/');
     
     expect(response.headers['ratelimit-policy']).toBeDefined();
     expect(response.headers['ratelimit-policy']).toContain('100');
   });
 
-  test('should include RateLimit header with limit, remaining, reset', async () => {
+  test('should include RateLimit header in draft-8 format', async () => {
     const response = await request(app).get('/');
     
+    // Draft-8 format: "100-in-15min"; r=<remaining>; t=<reset>
+    // Example: "100-in-15min"; r=88; t=900
     expect(response.headers['ratelimit']).toBeDefined();
     const rateLimit = response.headers['ratelimit'];
-    expect(rateLimit).toContain('limit=');
-    expect(rateLimit).toContain('remaining=');
-    expect(rateLimit).toContain('reset=');
+    // Check for draft-8 format components: remaining (r=) and reset time (t=)
+    expect(rateLimit).toMatch(/r=\d+/);  // remaining
+    expect(rateLimit).toMatch(/t=\d+/);  // reset time in seconds
+    
+    // Verify legacy headers are disabled (legacyHeaders: false in server.js)
+    expect(response.headers['x-ratelimit-limit']).toBeUndefined();
+    expect(response.headers['x-ratelimit-remaining']).toBeUndefined();
+    expect(response.headers['x-ratelimit-reset']).toBeUndefined();
   });
 });
 

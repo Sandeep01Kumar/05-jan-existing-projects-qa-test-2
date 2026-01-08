@@ -215,10 +215,8 @@ const globalLimiter = rateLimit({
     message: 'You have exceeded the rate limit. Please try again later.',
     retryAfter: Math.ceil(config.rateLimitWindowMs / 1000)
   },
-  keyGenerator: (req) => {
-    // Use X-Forwarded-For header if behind a proxy, otherwise use IP
-    return req.ip || req.connection.remoteAddress;
-  },
+  // Uses default keyGenerator which properly handles IPv6 via ipKeyGenerator
+  // Default behavior: uses req.ip with proper IPv6 subnet handling
   skip: (req) => {
     // Skip rate limiting for health check endpoint
     return req.path === '/health';
@@ -240,10 +238,8 @@ const strictLimiter = rateLimit({
     error: 'Too Many Requests',
     message: 'Too many attempts. Please try again later.',
     retryAfter: Math.ceil(config.rateLimitWindowMs / 1000)
-  },
-  keyGenerator: (req) => {
-    return req.ip || req.connection.remoteAddress;
   }
+  // Uses default keyGenerator which properly handles IPv6 via ipKeyGenerator
 });
 
 // Apply global rate limiter to all routes
