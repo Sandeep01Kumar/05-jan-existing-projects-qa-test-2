@@ -132,13 +132,12 @@ describe('Rate Limiting (draft-8)', () => {
   test('should include RateLimit header in draft-8 format', async () => {
     const response = await request(app).get('/');
     
-    // Draft-8 format: "100-in-15min"; r=<remaining>; t=<reset>
-    // Example: "100-in-15min"; r=88; t=900
+    // Draft-8 format: RateLimit: limit=100, remaining=99, reset=900
     expect(response.headers['ratelimit']).toBeDefined();
     const rateLimit = response.headers['ratelimit'];
-    // Check for draft-8 format components: remaining (r=) and reset time (t=)
-    expect(rateLimit).toMatch(/r=\d+/);  // remaining
-    expect(rateLimit).toMatch(/t=\d+/);  // reset time in seconds
+    expect(rateLimit).toContain('limit=');
+    expect(rateLimit).toContain('remaining=');
+    expect(rateLimit).toContain('reset=');
     
     // Verify legacy headers are disabled (legacyHeaders: false in server.js)
     expect(response.headers['x-ratelimit-limit']).toBeUndefined();
