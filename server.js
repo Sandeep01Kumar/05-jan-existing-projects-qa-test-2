@@ -202,12 +202,12 @@ app.use(cors(corsOptions));
 /**
  * Global rate limiter - 100 requests per 15 minutes
  * Applied to all routes
- * Uses draft-7 style headers
+ * Uses draft-8 style headers
  */
 const globalLimiter = rateLimit({
   windowMs: config.rateLimitWindowMs,
-  max: config.rateLimitMaxRequests,
-  standardHeaders: 'draft-7',
+  limit: config.rateLimitMaxRequests,
+  standardHeaders: 'draft-8',
   legacyHeaders: false,
   message: {
     status: 429,
@@ -228,12 +228,12 @@ const globalLimiter = rateLimit({
 /**
  * Strict rate limiter - 10 requests per 15 minutes
  * Applied to sensitive endpoints (login, registration, etc.)
- * Uses draft-7 style headers
+ * Uses draft-8 style headers
  */
 const strictLimiter = rateLimit({
   windowMs: config.rateLimitWindowMs,
-  max: config.strictRateLimitMaxRequests,
-  standardHeaders: 'draft-7',
+  limit: config.strictRateLimitMaxRequests,
+  standardHeaders: 'draft-8',
   legacyHeaders: false,
   message: {
     status: 429,
