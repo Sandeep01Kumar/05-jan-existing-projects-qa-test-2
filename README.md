@@ -115,8 +115,8 @@ This will install the following production dependencies:
 | express | ^4.21.2 | Web framework with middleware support |
 | helmet | ^8.1.0 | Security headers middleware |
 | cors | ^2.8.5 | CORS configuration middleware |
-| express-rate-limit | ^7.5.0 | Request rate limiting |
-| joi | ^17.13.3 | Input validation library |
+| express-rate-limit | ^8.2.1 | Request rate limiting (draft-8 RateLimit headers) |
+| joi | ^18.0.2 | Input validation library |
 
 And development dependencies:
 
@@ -417,8 +417,8 @@ Two rate limiting tiers are implemented:
 ```javascript
 rateLimit({
   windowMs: 15 * 60 * 1000,  // 15 minutes
-  max: 100,                   // 100 requests per window
-  standardHeaders: 'draft-7',
+  limit: 100,                 // 100 requests per window
+  standardHeaders: 'draft-8',
   legacyHeaders: false,
   message: {
     error: 'Too many requests, please try again later.',
@@ -432,8 +432,8 @@ rateLimit({
 ```javascript
 rateLimit({
   windowMs: 15 * 60 * 1000,  // 15 minutes
-  max: 10,                    // 10 requests per window
-  standardHeaders: 'draft-7',
+  limit: 10,                  // 10 requests per window
+  standardHeaders: 'draft-8',
   legacyHeaders: false,
   message: {
     error: 'Too many requests to this endpoint, please try again later.',
