@@ -1,6 +1,6 @@
 /**
  * @module hello_world/server
- * @description A minimal Node.js HTTP server that listens on a configurable
+ * @description A minimal Node.js HTTP server that listens on a specified
  * hostname and port, responding to every incoming request with a plain-text
  * "Hello, World!" greeting.
  * @author hxu
@@ -11,6 +11,7 @@
 // Import the built-in Node.js HTTP module for creating the server
 const http = require('http');
 
+// Server configuration constants
 /**
  * @constant {string} hostname
  * @description The IP address on which the server will listen for incoming connections.
