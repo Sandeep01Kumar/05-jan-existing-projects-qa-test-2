@@ -5,7 +5,7 @@ test project for backprop integration. Do not touch!
 
 This server has been hardened with comprehensive security middleware following OWASP Node.js Security Best Practices. The following six security measures have been implemented:
 
-1. **HTTP security headers** via [helmet.js](https://helmetjs.github.io/) — Automatically sets 11 OWASP-recommended response headers on every request to prevent XSS, clickjacking, MIME sniffing, and information disclosure attacks.
+1. **HTTP security headers** via [helmet.js](https://helmetjs.github.io/) — Automatically sets 12 OWASP-recommended response headers on every request to prevent XSS, clickjacking, MIME sniffing, and information disclosure attacks.
 2. **Input validation** via [express-validator](https://express-validator.github.io/) — Sanitizes and validates all incoming request parameters, query strings, and body content, rejecting malformed or malicious input with structured 400 error responses.
 3. **Rate limiting** via [express-rate-limit](https://express-rate-limit.mintlify.app/) — Enforces per-IP request throttling (100 requests per 15-minute window) to prevent denial-of-service and brute-force attacks, returning 429 Too Many Requests when the limit is exceeded.
 4. **HTTPS transport encryption** — Uses Node.js built-in `https` module to create a TLS-encrypted server alongside HTTP, with TLS 1.2 enforced as the minimum protocol version. Falls back gracefully to HTTP-only mode if certificates are unavailable.
@@ -92,7 +92,7 @@ node server.js
 
 ### Security Headers
 
-[helmet.js](https://helmetjs.github.io/) automatically sets the following 11 HTTP security headers on every response:
+[helmet.js](https://helmetjs.github.io/) automatically sets the following 12 HTTP security headers on every response:
 
 | Header | Purpose |
 |--------|---------|
@@ -106,6 +106,7 @@ node server.js
 | `X-DNS-Prefetch-Control` | Controls browser DNS prefetching to reduce privacy leakage (set to `off`) |
 | `X-Download-Options` | Prevents Internet Explorer from executing downloads in the site's context (set to `noopen`) |
 | `X-Frame-Options` | Prevents the page from being loaded in a frame or iframe to mitigate clickjacking (set to `SAMEORIGIN`) |
+| `X-Permitted-Cross-Domain-Policies` | Prevents Adobe Flash and PDF documents from reading data across domains (set to `none`) |
 | `X-XSS-Protection` | Disabled (`0`) — modern browsers rely on CSP instead; disabling prevents old IE vulnerabilities |
 
 Additionally, the `X-Powered-By` header that Express sets by default is **removed** by helmet to prevent server technology fingerprinting.
@@ -116,7 +117,7 @@ Security test files are located in the `tests/security/` directory:
 
 | Test File | Coverage |
 |-----------|----------|
-| `tests/security/test_headers.js` | Verifies all 11 helmet security headers are present in responses and `X-Powered-By` is absent |
+| `tests/security/test_headers.js` | Verifies all 12 helmet security headers are present in responses and `X-Powered-By` is absent |
 | `tests/security/test_rate_limit.js` | Verifies rate limiting behavior — requests 1–100 return 200, request 101 returns 429 |
 | `tests/security/test_cors.js` | Verifies CORS policy — allowed origins receive CORS headers, non-allowed origins are blocked |
 | `tests/security/test_validation.js` | Verifies input sanitization — malicious payloads are rejected with 400 responses |
