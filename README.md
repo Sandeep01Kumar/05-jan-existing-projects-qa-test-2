@@ -120,12 +120,12 @@ Content-Type: text/plain
 Date: Mon, 01 Jan 2024 00:00:00 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
-Transfer-Encoding: chunked
+Content-Length: 14
 
 Hello, World!
 ```
 
-> **Note:** The `Date` header value will vary based on the time of the request. All other fields are constant and determined by the server implementation.
+> **Note:** The `Date` header value will vary based on the time of the request. The `Content-Length` and transfer encoding headers may vary by Node.js version. All remaining fields are constant and determined by the server implementation.
 
 ---
 
@@ -251,7 +251,7 @@ The repository uses a **flat structure** — all files reside at the root level 
 | File | Description |
 |------|-------------|
 | `server.js` | Main HTTP server — the project entry point |
-| `server - Copy.js` | Byte-for-byte duplicate of `server.js` (test artifact) |
+| `server - Copy.js` | Copy of original `server.js` before JSDoc annotations (test artifact) |
 | `package.json` | NPM package manifest (name: `hello_world`, v1.0.0, MIT) |
 | `package-lock.json` | NPM dependency lockfile (lockfileVersion 3) |
 | `jsdoc.json` | JSDoc generator configuration file |
