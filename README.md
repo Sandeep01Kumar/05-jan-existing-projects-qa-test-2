@@ -76,7 +76,7 @@ All security parameters are configurable via environment variables to support di
 | `HTTPS_PORT` | HTTPS server port | `3443` |
 | `TLS_KEY_PATH` | Path to TLS private key file | _(not set)_ |
 | `TLS_CERT_PATH` | Path to TLS certificate file | _(not set)_ |
-| `CORS_ORIGINS` | Comma-separated list of allowed CORS origins (e.g. `http://localhost:8080,https://app.example.com`) | _(empty — no cross-origin requests allowed)_ |
+| `CORS_ORIGINS` | Comma-separated list of allowed CORS origins (e.g. `http://localhost:8080,https://app.example.com`) | `http://localhost:3000` |
 | `RATE_LIMIT_WINDOW_MS` | Rate limit time window in milliseconds | `900000` (15 minutes) |
 | `RATE_LIMIT_MAX` | Maximum requests per window per IP address | `100` |
 
