@@ -37,7 +37,7 @@ const { body, query, param, validationResult } = require('express-validator');
 // ---------------------------------------------------------------------------
 const https = require('https');
 const fs    = require('fs');
-const path  = require('path'); // eslint-disable-line no-unused-vars — kept for cert-path resolution if needed
+const path  = require('path');
 
 // ---------------------------------------------------------------------------
 // Configuration — all values are environment-variable-driven per AAP §0.11.1
@@ -239,7 +239,12 @@ app.use((err, req, res, next) => {
 
   // Log full stack trace server-side but never expose it to the client
   console.error(err.stack);
-  res.status(500).json({ error: 'Internal Server Error' });
+
+  // Propagate the status code from middleware errors (e.g. body-parser emits 400
+  // for malformed JSON and 413 for oversized payloads) while defaulting to 500
+  // for truly unknown errors.  This avoids masking client errors as server errors.
+  const statusCode = err.status || err.statusCode || 500;
+  res.status(statusCode).json({ error: statusCode < 500 ? err.message : 'Internal Server Error' });
 });
 
 // ===========================================================================
@@ -257,23 +262,39 @@ app.use((err, req, res, next) => {
 
 /* istanbul ignore next */
 if (require.main === module) {
+  /**
+   * handleServerError — Shared error handler for HTTP and HTTPS server instances.
+   * Handles EADDRINUSE gracefully (logs a helpful message and exits) and re-throws
+   * all other errors so they surface as unhandled exceptions.
+   */
+  const handleServerError = (protocol, serverPort) => (err) => {
+    if (err.code === 'EADDRINUSE') {
+      console.error(`Error: ${protocol} port ${serverPort} is already in use.`);
+      process.exit(1);
+    }
+    throw err;
+  };
+
   // Always start the HTTP server
-  app.listen(port, hostname, () => {
+  const httpServer = app.listen(port, hostname, () => {
     console.log(`HTTP Server running at http://${hostname}:${port}/`);
   });
+  httpServer.on('error', handleServerError('HTTP', port));
 
   // Conditionally start the HTTPS server — graceful degradation if certs missing
   if (tlsKeyPath && tlsCertPath) {
     try {
       const tlsOptions = {
-        key:  fs.readFileSync(tlsKeyPath),
-        cert: fs.readFileSync(tlsCertPath),
+        key:  fs.readFileSync(path.resolve(tlsKeyPath)),
+        cert: fs.readFileSync(path.resolve(tlsCertPath)),
         minVersion: 'TLSv1.2' // Security: Enforce minimum TLS 1.2 per OWASP
       };
 
-      https.createServer(tlsOptions, app).listen(httpsPort, hostname, () => {
+      const httpsServer = https.createServer(tlsOptions, app);
+      httpsServer.listen(httpsPort, hostname, () => {
         console.log(`HTTPS Server running at https://${hostname}:${httpsPort}/`);
       });
+      httpsServer.on('error', handleServerError('HTTPS', httpsPort));
     } catch (err) {
       console.warn(
         'Warning: HTTPS server not started — TLS certificate files could not be read:',
