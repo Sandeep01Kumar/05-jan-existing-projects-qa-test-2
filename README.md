@@ -131,13 +131,13 @@ Hello, World!
 
 ## Code Walkthrough
 
-This section provides an annotated explanation of each logical section of `server.js` (14 lines total). JSDoc documentation blocks are present in the actual source file; the snippets below show the functional code for clarity, with JSDoc annotations described separately.
+This section provides an annotated explanation of each logical section of `server.js` (14 lines of functional code, 53 lines including JSDoc documentation and inline comments). The snippets below show the code with inline comments as it appears in the annotated source file; JSDoc block annotations are described separately within each section.
 
 ---
 
 ### 1. Module Import
 
-**Source: `server.js` line 1**
+**Source: `server.js` line 12**
 
 ```javascript
 const http = require('http');
@@ -151,7 +151,7 @@ The `require('http')` call loads Node.js's built-in `http` module using **Common
 
 ### 2. Server Configuration
 
-**Source: `server.js` lines 3–4**
+**Source: `server.js` lines 21 and 28**
 
 ```javascript
 const hostname = '127.0.0.1';
@@ -169,12 +169,15 @@ Two constants define the server's network binding:
 
 ### 3. Request Handler
 
-**Source: `server.js` lines 6–10**
+**Source: `server.js` lines 37–44**
 
 ```javascript
 const server = http.createServer((req, res) => {
+  // Set the HTTP response status code to 200 (OK)
   res.statusCode = 200;
+  // Set the response Content-Type header to plain text
   res.setHeader('Content-Type', 'text/plain');
+  // Send the response body and signal that the response is complete
   res.end('Hello, World!\n');
 });
 ```
@@ -193,10 +196,11 @@ const server = http.createServer((req, res) => {
 
 ### 4. Server Startup
 
-**Source: `server.js` lines 12–14**
+**Source: `server.js` lines 50–53**
 
 ```javascript
 server.listen(port, hostname, () => {
+  // Log the server URL to the console to confirm successful startup
   console.log(`Server running at http://${hostname}:${port}/`);
 });
 ```
@@ -246,7 +250,7 @@ The repository uses a **flat structure** — all files reside at the root level 
 
 | File | Description |
 |------|-------------|
-| `server.js` | Main HTTP server — entry point for the application |
+| `server.js` | Main HTTP server — the project entry point |
 | `server - Copy.js` | Byte-for-byte duplicate of `server.js` (test artifact) |
 | `package.json` | NPM package manifest (name: `hello_world`, v1.0.0, MIT) |
 | `package-lock.json` | NPM dependency lockfile (lockfileVersion 3) |
@@ -259,10 +263,16 @@ The repository uses a **flat structure** — all files reside at the root level 
 | `test.py - Copy.txt` | Zero-byte placeholder file |
 | `test.py.txt` | Zero-byte placeholder file |
 | `test.txt.txt` | Zero-byte placeholder file |
+| `100Pages.pdf` | PDF test artifact (multi-page document) |
+| `100Pages - Copy.pdf` | Duplicate of `100Pages.pdf` (test artifact) |
+| `demo.jpg` | JPEG image test artifact |
+| `demo - Copy.jpg` | Duplicate of `demo.jpg` (test artifact) |
+| `sample.doc` | Word document test artifact |
+| `sample - Copy.doc` | Duplicate of `sample.doc` (test artifact) |
 
 > **⚠️ Known anomaly:** `package.json` declares `"main": "index.js"`, but `index.js` does not exist in this repository. The actual entry point is `server.js`. This discrepancy is an intentional test fixture characteristic; run the server directly with `node server.js`.
 
-> **ℹ️ Duplicate files:** Several files ending in ` - Copy` (or `.txt` variants) are intentional test artifacts for the Blitzy Backprop integration test suite. They are not part of the application logic.
+> **ℹ️ Duplicate files:** Several files ending in ` - Copy` (or `.txt` variants) are intentional test artifacts for the Blitzy Backprop integration test suite. They are not part of the server logic.
 
 ---
 
