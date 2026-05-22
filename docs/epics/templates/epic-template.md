@@ -20,7 +20,7 @@ AUTHORING RULES ENFORCED BY THIS TEMPLATE
 - Rule AR-2 (Stable Identifiers): `<EPIC-ID>` and all embedded `<STORY-ID>`s must be unique across the catalog and never renumbered once assigned.
 - Rule AR-3 (INVEST-Aligned Stories): Every embedded story uses the `As a / I want / so that` framing; see `story-template.md`.
 - Rule AR-4 (Given-When-Then Acceptance Criteria): Every story has 2-5 acceptance criteria; every epic has 3-6 epic-level acceptance criteria; all in Given-When-Then form.
-- Rule AR-5 (Source Grounding): The References section must cite public Firebase or Crashlytics guidance; inferred content must be flagged `[inferred - no direct source]`.
+- Rule AR-5 (Source Grounding): The References section must cite public Firebase or Crashlytics guidance; inferred content must be flagged `[inferred — no direct source]`.
 - Rule AR-6 (No Time-Based Planning): Epics describe WHAT and HOW, never WHEN. No sprint numbers, no calendar dates, no week-by-week schedules.
 - Rule AR-7 (Dashed Lists Only): All unordered lists use `-` markers; no numbered bullets anywhere.
 
@@ -140,7 +140,7 @@ If this epic has no predecessors or no successors, replace the corresponding row
 
 ## References
 
-Per Rule AR-5 (Source Grounding), this epic's content must be grounded in public Firebase or Crashlytics guidance. The following references support the claims made above. Inferred content not directly traceable to a public source must be explicitly flagged inline as `[inferred - no direct source]`.
+Per Rule AR-5 (Source Grounding), this epic's content must be grounded in public Firebase or Crashlytics guidance. The following references support the claims made above. Inferred content not directly traceable to a public source must be explicitly flagged inline as `[inferred — no direct source]`.
 
 - [<Reference title 1 — e.g., "Firebase Crashlytics overview">](https://firebase.google.com/docs/crashlytics) — <One-line description of what this reference grounds in this epic>.
 - [<Reference title 2 — e.g., "Get started with Firebase Crashlytics">](https://firebase.google.com/docs/crashlytics/get-started) — <One-line description>.
