@@ -2,15 +2,13 @@
 
 This folder contains the agile planning artifacts for the one-time transition from the legacy Fabric SDK to the Firebase Crashlytics SDK. The migration spans every supported client platform — Android, iOS, Flutter, Unity, and React Native — and covers the full transition lifecycle from initial inventory through final Fabric SDK decommission. Per the user's R-2 mandate, every epic in this folder carries explicit Given-When-Then acceptance criteria (Rule AR-4) so that downstream readers — engineering, QA, product management, release management, and security — can independently verify epic completion against observable conditions. The ten epics are sequenced into six logical phases that minimize rework, identify parallelization opportunities, and keep the dependency graph between epics acyclic. All content is grounded in public Fabric → Firebase Crashlytics migration guidance; see each epic's `## References` section for the canonical sources.
 
-## User Request (Preserved Verbatim)
+## User Requirement (Verbatim)
 
-This theme directly satisfies the second bullet of the user's two-part request, preserved verbatim below per Rule AR-8:
+The user's second requirement bullet is preserved character-for-character below per Rule AR-8. The complete two-bullet user input — including the parent-child indentation that scopes this migration request as a sub-bullet of the broader pipeline request — is preserved in the master catalog index at [`../README.md`](../README.md).
 
-> User input — preserved verbatim:
-> - Generate epics and stories for the Crashlytics crash reporting pipeline from crash capture to dashboard delivery
->   - Break down the Fabric to Firebase Crashlytics migration into epics with acceptance criteria
+> Break down the Fabric to Firebase Crashlytics migration into epics with acceptance criteria
 
-This theme implements the indented second bullet ("Break down the Fabric to Firebase Crashlytics migration into epics with acceptance criteria"). The pipeline catalog under [../pipeline/README.md](../pipeline/README.md) implements the parent bullet.
+This catalog of 10 epics with explicit Given-When-Then acceptance criteria across every embedded user story is the direct response to the requirement above. The companion pipeline catalog under [`../pipeline/README.md`](../pipeline/README.md) implements the parent bullet, under which this migration request appears as an indented sub-bullet in the user's original input.
 
 ## Sunset Context
 
