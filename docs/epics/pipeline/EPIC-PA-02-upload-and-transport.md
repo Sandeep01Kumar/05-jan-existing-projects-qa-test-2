@@ -69,7 +69,7 @@ This epic contains 5 user stories embedded inline using H3 headings (Rule AR-1).
 
 ### STORY-PA-02-S02: Upload crashes after app has closed (new SDK capability)
 
-**As an** on-call engineer, **I want** crashes to be uploaded after the app has closed rather than only at next launch, **so that** I receive crash data in more real time and can detect emerging issues sooner.
+**As a** responding on-call engineer, **I want** crashes to be uploaded after the app has closed rather than only at next launch, **so that** I receive crash data in more real time and can detect emerging issues sooner.
 
 #### Acceptance Criteria
 
@@ -174,6 +174,6 @@ This epic has the following predecessor and successor relationships within the c
 Per Rule AR-5 (Source Grounding), this epic is grounded in public Firebase or Crashlytics guidance. Inferred content not directly traceable to a public source is flagged inline as `[inferred — no direct source]`.
 
 - [Firebase Crashlytics — Product Overview](https://firebase.google.com/docs/crashlytics) — Documents Crashlytics as a real-time crash reporter; grounds the transport stage's role within the canonical pipeline.
-- [Firebase Blog — It's time to upgrade to the new Firebase Crashlytics SDK](https://firebase.blog/posts/2020/10/its-time-to-upgrade-to-new-firebase-crashlytics) — Documents that the new SDK can upload crashes after an app has closed (allowing crash data to be received in more real time on Android) and is estimated to capture about 30% more Android crashes than the legacy Fabric SDK; grounds `STORY-PA-02-S02`.
+- [Firebase Blog — It's time to upgrade to the new Firebase Crashlytics SDK](https://firebase.blog/posts/2020/10/its-time-to-upgrade-to-new-firebase/) — Documents that the new SDK can upload crashes after an app has closed (allowing crash data to be received in more real time on Android) and is estimated to capture about 30% more Android crashes than the legacy Fabric SDK; grounds `STORY-PA-02-S02`.
 - [Crashlytics Pipeline Guide (ReverseBits)](https://reversebits.tech/blog/firebase-crashlytics-guide) — Documents that crash reports are stored locally if the app crashes immediately and on the next launch are silently uploaded to Firebase servers; grounds `STORY-PA-02-S01`.
 - [Firebase Crashlytics — Troubleshooting](https://firebase.google.com/docs/crashlytics/troubleshooting) — Describes how to enable SDK debug logging to surface transport state; grounds the in-scope "Diagnostic logging" item.

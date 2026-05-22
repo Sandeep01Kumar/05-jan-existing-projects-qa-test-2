@@ -102,7 +102,7 @@ This epic contains 4 user stories embedded inline using H3 headings (Rule AR-1).
 
 ### STORY-PA-03-S04: Apply mapping artifacts server-side to produce human-readable reports
 
-**As an** on-call engineer, **I want** Firebase to apply uploaded mapping artifacts to incoming crash payloads server-side, **so that** crash reports in the Firebase Console are always displayed in their human-readable form without manual deobfuscation on my part.
+**As a** member of the on-call engineering team, **I want** Firebase to apply uploaded mapping artifacts to incoming crash payloads server-side, **so that** crash reports in the Firebase Console are always displayed in their human-readable form without manual deobfuscation on my part.
 
 #### Acceptance Criteria
 
@@ -153,7 +153,7 @@ This epic has the following predecessor and successor relationships within the c
 Per Rule AR-5 (Source Grounding), this epic is grounded in public Firebase or Crashlytics guidance. Inferred content not directly traceable to a public source is flagged inline as `[inferred — no direct source]`.
 
 - [Firebase Crashlytics — Product Overview](https://firebase.google.com/docs/crashlytics) — Documents that Crashlytics uses mapping information for the app's build (for example, dSYM files for Apple platforms) to create human-readable crash reports.
-- [Firebase Blog — It's time to upgrade to the new Firebase Crashlytics SDK](https://firebase.blog/posts/2020/10/its-time-to-upgrade-to-new-firebase-crashlytics) — Documents the streamlined Crashlytics Gradle Plugin's new API for mapping and native symbol files, and the size reduction from over 20 MB to approximately 100 KB.
+- [Firebase Blog — It's time to upgrade to the new Firebase Crashlytics SDK](https://firebase.blog/posts/2020/10/its-time-to-upgrade-to-new-firebase/) — Documents the streamlined Crashlytics Gradle Plugin's new API for mapping and native symbol files, and the size reduction from over 20 MB to approximately 100 KB.
 - [Firebase Crashlytics — Get deobfuscated reports (Android)](https://firebase.google.com/docs/crashlytics/get-deobfuscated-reports) — Canonical ProGuard/R8 mapping upload procedure; grounds `STORY-PA-03-S01`.
 - [Firebase Crashlytics — Get deobfuscated reports (iOS)](https://firebase.google.com/docs/crashlytics/get-deobfuscated-reports?platform=ios) — Canonical dSYM upload procedure; grounds `STORY-PA-03-S02` including the Run Script Build Phase, Fastlane invocations, and the Bitcode-recompile flow.
 - [Firebase Crashlytics — NDK reports](https://firebase.google.com/docs/crashlytics/ndk-reports) — NDK native symbol upload procedure; grounds `STORY-PA-03-S03` including the `nativeSymbolUploadEnabled` extension and per-ABI upload via `uploadCrashlyticsSymbolFile<Variant>`.

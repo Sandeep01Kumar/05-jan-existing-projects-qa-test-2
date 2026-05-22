@@ -68,7 +68,7 @@ This epic contains 6 user stories — the LARGEST count in the pipeline catalog,
 
 ### STORY-PA-07-S02: Provide issue detail view with stack trace, breadcrumbs, and keys
 
-**As an** on-call engineer, **I want** each issue's detail view to show the full symbolicated stack trace, breadcrumb timeline, custom keys, custom logs, user identifiers, and affected-device breakdown, **so that** I have all the context needed to reproduce, diagnose, and fix the underlying crash without leaving the dashboard.
+**As a** member of the on-call team, **I want** each issue's detail view to show the full symbolicated stack trace, breadcrumb timeline, custom keys, custom logs, user identifiers, and affected-device breakdown, **so that** I have all the context needed to reproduce, diagnose, and fix the underlying crash without leaving the dashboard.
 
 #### Acceptance Criteria
 
@@ -87,7 +87,7 @@ This epic contains 6 user stories — the LARGEST count in the pipeline catalog,
 
 ### STORY-PA-07-S03: Filter issues by severity, time, version, and device
 
-**As an** on-call engineer, **I want** to filter the dashboard issue list by severity, time window, app version, and device, **so that** I can rapidly answer targeted operational questions like "what's broken in the latest release?" or "what's the trend on ANRs over the past 7 days?" without writing queries or exporting data.
+**As a** member of the on-call team, **I want** to filter the dashboard issue list by severity, time window, app version, and device, **so that** I can rapidly answer targeted operational questions like "what's broken in the latest release?" or "what's the trend on ANRs over the past 7 days?" without writing queries or exporting data.
 
 #### Acceptance Criteria
 
@@ -106,7 +106,7 @@ This epic contains 6 user stories — the LARGEST count in the pipeline catalog,
 
 ### STORY-PA-07-S04: Filter Android crashes by Google Play track
 
-**As an** Android release manager, **I want** to filter the dashboard by Google Play track (production, beta, alpha, internal testing), **so that** I can separate pre-release stability signals from production stability signals and make informed promotion decisions for each candidate.
+**As a** release manager for Android, **I want** to filter the dashboard by Google Play track (production, beta, alpha, internal testing), **so that** I can separate pre-release stability signals from production stability signals and make informed promotion decisions for each candidate.
 
 #### Acceptance Criteria
 
@@ -124,7 +124,7 @@ This epic contains 6 user stories — the LARGEST count in the pipeline catalog,
 
 ### STORY-PA-07-S05: Surface crashes inside Android Studio via App Quality Insights
 
-**As an** Android mobile developer, **I want** Crashlytics data accessible directly within Android Studio via the App Quality Insights window, **so that** I can diagnose crashes from inside my IDE without alt-tabbing to the browser, preserving my working context.
+**As a** mobile developer working on Android, **I want** Crashlytics data accessible directly within Android Studio via the App Quality Insights window, **so that** I can diagnose crashes from inside my IDE without alt-tabbing to the browser, preserving my working context.
 
 #### Acceptance Criteria
 

@@ -88,7 +88,7 @@ This epic contains 4 user stories embedded inline using H3 headings (Rule AR-1).
 
 ### STORY-PA-05-S03: Manually merge issues that share a root cause
 
-**As an** on-call engineer, **I want** to manually merge two issues that the automated fingerprinting incorrectly split apart, **so that** my triage queue is not cluttered with grouping mistakes and the consolidated occurrence counts accurately reflect the true impact of the underlying root cause.
+**As a** member of the on-call engineering team, **I want** to manually merge two issues that the automated fingerprinting incorrectly split apart, **so that** my triage queue is not cluttered with grouping mistakes and the consolidated occurrence counts accurately reflect the true impact of the underlying root cause.
 
 #### Acceptance Criteria
 
@@ -106,7 +106,7 @@ This epic contains 4 user stories embedded inline using H3 headings (Rule AR-1).
 
 ### STORY-PA-05-S04: Manually split an issue with multiple root causes
 
-**As an** on-call engineer, **I want** to manually split a single issue into multiple issues when its underlying crash payloads actually represent distinct root causes that the automated fingerprinting incorrectly conflated, **so that** each root cause can be triaged independently rather than being hidden inside a single misleading record.
+**As a** member of the on-call engineering team, **I want** to manually split a single issue into multiple issues when its underlying crash payloads actually represent distinct root causes that the automated fingerprinting incorrectly conflated, **so that** each root cause can be triaged independently rather than being hidden inside a single misleading record.
 
 #### Acceptance Criteria
 
@@ -167,4 +167,4 @@ Per Rule AR-5 (Source Grounding), this epic's content is grounded in public Fire
 - [Firebase Crashlytics — Troubleshooting](https://firebase.google.com/docs/crashlytics/troubleshooting) — Documents expected console verification timing and the operational signals (such as crash-free-users) that drive triage prioritization. Grounds the impact-counter properties in `STORY-PA-05-S01` and the regression-surfacing behavior in `STORY-PA-05-S02`.
 - [Crashlytics Pipeline Guide (ReverseBits)](https://reversebits.tech/blog/firebase-crashlytics-guide) — Documents that Crashlytics groups crashes by stack-trace fingerprints. Grounds the fingerprinting property at the core of `STORY-PA-05-S01` and the deterministic grouping property at the epic level.
 - [Android Studio — App Quality Insights](https://developer.android.com/studio/debug/app-quality-insights) — Documents the integration that surfaces grouped issues directly inside Android Studio with severity and version filters. Grounds the issue-metadata fields (title, version range, severity context) that this epic must expose so downstream consumers can render them.
-- [Keeping Apps Stable: Using Crashlytics in 2025 (Medium)](https://medium.com/@stable-apps-2025/keeping-apps-stable) — `[inferred — no direct source]` — Discusses the industry trend toward AI-powered grouping enhancements that cluster crashes by semantic similarity rather than strict fingerprint equality. Grounds the forward-compatibility design note in the In Scope section and the corresponding epic-level acceptance criterion.
+- AI-powered grouping forward-compatibility design note — `[inferred — no direct source]` — Reflects general industry-trend reasoning about clustering crashes by semantic similarity rather than by strict stack-trace fingerprint equality. No authoritative public Firebase or Google source documents this as a current Crashlytics product feature, so the forward-compatibility design note in the In Scope section and the corresponding epic-level acceptance criterion are recorded as inferred design guidance rather than a documented commitment.

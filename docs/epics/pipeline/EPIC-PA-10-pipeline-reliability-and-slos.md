@@ -72,7 +72,7 @@ This epic contains 4 user stories. Each story is derived from `../templates/stor
 
 ### STORY-PA-10-S02: Establish time-to-dashboard SLO and synthetic monitoring
 
-**As an** on-call engineer, **I want** a documented time-to-dashboard SLO with continuous synthetic monitoring, **so that** I can trust that a healthy-looking Firebase Console dashboard reflects current reality rather than a stalled or partial ingestion pipeline that is silently lying to the paging system.
+**As a** member of the on-call team, **I want** a documented time-to-dashboard SLO with continuous synthetic monitoring, **so that** I can trust that a healthy-looking Firebase Console dashboard reflects current reality rather than a stalled or partial ingestion pipeline that is silently lying to the paging system.
 
 #### Acceptance Criteria
 
@@ -110,7 +110,7 @@ This epic contains 4 user stories. Each story is derived from `../templates/stor
 
 ### STORY-PA-10-S04: Codify error-budget policy and budget-burn responses
 
-**As an** engineering leader, **I want** a documented error-budget policy with named budget-burn responses, **so that** SLO breaches translate into principled, fair engineering tradeoffs between reliability and feature work rather than into ad-hoc reactions driven by whoever shouts loudest in the moment.
+**As a** member of engineering leadership, **I want** a documented error-budget policy with named budget-burn responses, **so that** SLO breaches translate into principled, fair engineering tradeoffs between reliability and feature work rather than into ad-hoc reactions driven by whoever shouts loudest in the moment.
 
 #### Acceptance Criteria
 
